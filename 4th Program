@@ -47,10 +47,6 @@ activity_main.xml
         android:onClick="onExplicitButtonClicked" />
 </LinearLayout>
 
-activity_main.xml (simplified)
-
-
-
 MainActivity.java
 
 package com.bca.intent;
