@@ -57,15 +57,16 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    protected void onCreate(Bundle savedInstanceState) {
+     @Override
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         EditText user = findViewById(R.id.editTextUsername);
         EditText pass = findViewById(R.id.editTextPassword);
         findViewById(R.id.buttonLogin).setOnClickListener(v -> {
-            String u = user.getText().toString().trim(), p = pass.getText().toString().trim();
-            Toast.makeText(this, (u.equals("admin") && p.equals("pass")) ?
+            String username = user.getText().toString().trim(), password = pass.getText().toString().trim();
+            Toast.makeText(this, (username.equals("admin") && password.equals("pass")) ?
                 "Login successful" : "Invalid username or password", Toast.LENGTH_SHORT).show();
         });
     }
