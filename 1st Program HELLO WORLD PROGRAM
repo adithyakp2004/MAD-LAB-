@@ -1,4 +1,4 @@
-HELLO WORLD PROGRAM
+
 activity_main.xml
 <?xml version="1.0" encoding="utf8"?>
 <androidx.constraintlayout.widget.ConstraintLayout 
