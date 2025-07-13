@@ -68,7 +68,15 @@ public class MainActivity extends AppCompatActivity {
             String u = user.getText().toString().trim(), p = pass.getText().toString().trim();
             Toast.makeText(this, (u.equals("admin") && p.equals("pass")) ?
                 "Login successful" : "Invalid username or password", Toast.LENGTH_SHORT).show();
-        });
+             Alternative code//
+            if (u.isEmpty() || p.isEmpty()) {
+                Toast.makeText(this, "Enter username and password", Toast.LENGTH_SHORT).show();
+            } else if (u.equals("admin") && p.equals("pass")) {
+                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+            }
+     });
     }
 }
 OPTIONAL 
