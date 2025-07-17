@@ -1,0 +1,61 @@
+Learn to deploy Android applications.
+
+1. Prepare App (use Program 1 Hello world for this program)
+(1st program code)
+
+2. Generate a Signed APK :-
+ Go to Build > Generate Signed Bundle/APK in Android Studio.
+ Create a new keystore or use an existing one (a keystore holds your app’s private signing key).
+ Select Release as the build type and finish the process to generate the signed APK.
+
+3. Test the Signed APK :-
+ Install the APK on different devices to ensure it works correctly.
+ Test thoroughly for bugs or issues caused during signing.
+
+4. Publish on Google Play :-
+ Log in to the Google Play Console.
+ Create a new app entry or update an existing one.
+ Fill in app details (title, description, screenshots, etc.).
+ Upload the signed APK.
+ Set pricing, distribution, and listing optimizations.
+Click "Publish" to release your app.
+
+5. Other Distribution Channels (Optional) :-
+ Distribute through platforms like Amazon Appstore, Samsung Galaxy Store, etc.
+ Follow their specific submission guidelines.
+
+6. Monitor and Update :-
+ Use Google Play Console to track performance and user feedback.
+ Regularly update your app to fix bugs, add features, and improve user experience.
+
+Hello world Program
+Activity_main.xml :
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Hello World!"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+android:textSize="30sp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+MainActivity.java :
+package com.example.myapplication;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+public class MainActivity extends AppCompatActivity {
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+}
+}
