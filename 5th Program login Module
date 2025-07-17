@@ -83,11 +83,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnLogin).setOnClickListener(v -> {
         EditText user = findViewById(R.id.editTextUsername) , pass = findViewById(R.id.editTextPassword);
         String u = user.getText().toString().trim(), p = pass.getText().toString().trim();
-            Toast.makeText(this,
-                user.isEmpty() || pass.isEmpty() ? "Enter username and password" :
-                (user.equals("admin") && pass.equals("pass") ? "Login successful" : "Invalid username or password"),
-                Toast.LENGTH_SHORT).show();
-            Alternative code //
+       
             if (u.isEmpty() || p.isEmpty()) {
                 Toast.makeText(this, "Enter username and password", Toast.LENGTH_SHORT).show();
             } else if (u.equals("admin") && p.equals("pass")) {
