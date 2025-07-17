@@ -1,66 +1,55 @@
 <!-- activity_main.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#FF5A01">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WELCOME"
-        android:textSize="30sp"
-        android:textColor="#042CF7"
-        android:padding="50dp"/>
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:background="#FFFFFF">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_centerInParent="true"
+ android:text="Welcome to the Main Screen"
+ android:textSize="20sp"
+ android:textColor="#000000" />
 </RelativeLayout>
 
 // MainActivity.java
-package com.example.pra4_2;
+package com.example.openingscreen;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.openingscreen.R;
+public class MainActivity extends AppCompatActivity {
+ @Override
+protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ }
+}
+
+<!--activity_splash_screen.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent">
+</RelativeLayout>
+
+// SplashScreenActivity.java
+package com.example.openingscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        new Handler().postDelayed(() -> {
-            startActivity(new Intent(MainActivity.this, MainscreenActivity.class));
-            finish();
-        }, 3000);
-    }
-}
-
-<!-- activity_mainscreen.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to home Page"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:textColor="@android:color/black"/>
-</RelativeLayout>
-
-// MainscreenActivity.java
-// Home Screen Activity shown after splash
-package com.example.pra4_2;
-
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainscreenActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainscreen);
-    }
+public class SplashScreenActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_splash_screen);
+ new Handler().postDelayed(() -> {
+ startActivity(new Intent(SplashScreenActivity.this, 
+MainActivity.class));
+ finish();
+ }, 2000);
+ }
 }
