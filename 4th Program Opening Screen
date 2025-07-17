@@ -26,54 +26,86 @@ AndroidManifest.xml
 activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
- android:layout_width="match_parent"
- android:layout_height="match_parent"
- android:background="#FFFFFF">
- <TextView
- android:layout_width="wrap_content"
- android:layout_height="wrap_content"
- android:layout_centerInParent="true"
- android:text="Welcome to the Main Screen"
- android:textSize="20sp"
- android:textColor="#000000" />
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:gravity="center"
+android:background="#FF5A01">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="WELCOME"
+android:ems="10"
+android:textSize="30dp"
+android:textColor="#042CF7"
+android:textAlignment="center"
+android:padding="50dp"/>
 </RelativeLayout>
 
-// MainActivity.java
-package com.example.openingscreen;
-import android.os.Bundle;
+MainActivity.java
+import android.content.Intent;
+import android.os.*;
+import android.view.WindowManager;
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.openingscreen.R;
+
 public class MainActivity extends AppCompatActivity {
- @Override
+private static final int SPLASH_SCREEN_TIME_OUT = 3000;
+@Override
 protected void onCreate(Bundle savedInstanceState) {
- super.onCreate(savedInstanceState);
- setContentView(R.layout.activity_main);
- }
+super.onCreate(savedInstanceState);
+EdgeToEdge.enable(this);
+setContentView(R.layout.activity_main);
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+WindowManager.LayoutParams.FLAG_FULLSCREEN);
+new Handler().postDelayed(new Runnable() {
+@Override
+public void run() {
+Intent i = new Intent(MainActivity.this, MainscreenActivity.class);
+startActivity(i);
+finish();
+}
+}, SPLASH_SCREEN_TIME_OUT);
+}
 }
 
-<!--activity_splash_screen.xml -->
+activity_mainscreen.xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
- android:layout_width="match_parent"
- android:layout_height="match_parent">
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainscreenActivity"
+android:gravity="center">
+<TextView android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Welcome to home Page"
+android:textStyle="bold"
+android:textSize="28dp"
+android:textColor="@color/black"/>
 </RelativeLayout>
 
-// SplashScreenActivity.java
-package com.example.openingscreen;
-
-import android.content.Intent;
+MainscreenActivity.java
 import android.os.Bundle;
-import android.os.Handler;
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-public class SplashScreenActivity extends AppCompatActivity {
- @Override
- protected void onCreate(Bundle savedInstanceState) {
- super.onCreate(savedInstanceState);
- setContentView(R.layout.activity_splash_screen);
- new Handler().postDelayed(() -> {
- startActivity(new Intent(SplashScreenActivity.this, 
-MainActivity.class));
- finish();
- }, 2000);
- }
+import androidx.core.graphics.Insets;
+import androidx.core.view.*;
+
+public class MainscreenActivity extends AppCompatActivity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+EdgeToEdge.enable(this);
+setContentView(R.layout.activity_mainscreen);
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v,
+insets) -> {
+Insets systemBars=insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right,systemBars.bottom);
+return insets;
+});
+}
 }
